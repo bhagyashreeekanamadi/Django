@@ -9,8 +9,11 @@ def home(request):
     # return HttpResponse('<h2>Homepage</h2>')
     tasks=Task.objects.filter(is_completed=False).order_by('-updated_at')
     # print(tasks)
+    completed_tasks=Task.objects.filter(is_completed=True)
+    # print(completed_tasks)
     context={
         'tasks':tasks,
+        'completed_tasks':completed_tasks
     }
     return render(request,'home.html',context)
 
